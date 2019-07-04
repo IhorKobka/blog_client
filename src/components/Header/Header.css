@@ -1,0 +1,62 @@
+.navbar-light .navbar-nav .nav-link {
+    color: #212631;
+    padding: 25px 20px;
+    border-right: 1px solid #eceef2;
+}
+.Header {
+    .category-nav {
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 101%;
+            height: 4px;
+            -webkit-transition: 0.2s width;
+            transition: 0.2s width;
+        }
+
+        &.green {
+            &:hover {
+                color: var(--blog-green);
+            }
+
+            &:after {
+                background-color: var(--blog-green);
+            }
+        }
+
+        &.orange {
+            &:hover {
+                color: var(--blog-orange);
+            }
+
+            &:after {
+                background-color: var(--blog-orange);
+            }
+        }
+
+        &.blue {
+            &:hover {
+                color: var(--blog-blue);
+            }
+
+            &:after {
+                background-color: var(--blog-blue);
+            }
+        }
+
+        &.violet {
+            &:hover {
+                color: var(--blog-violet);
+            }
+
+            &:after {
+                background-color: var(--blog-violet);
+            }
+        }
+    }
+}
