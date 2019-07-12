@@ -4,3 +4,13 @@
     --blog-blue: #0078ff;
     --blog-violet: #8d00ff;
 }
+
+a {
+    color: #212631;
+
+    &:hover, &:focus {
+        color: inherit;
+        text-decoration: underline;
+        outline: none;
+    }
+}

@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import './App.css';
 import HeaderContainer from "./containers/HeaderContainer";
+import HomeContainer from "./containers/HomeContainer";
 
 class App extends Component {
   render() {
     return (
-      <HeaderContainer />
+      <Fragment>
+        <HeaderContainer />
+        <HomeContainer/>
+      </Fragment>
     );
   }
 }
