@@ -1,5 +1,7 @@
-import React, {Component, Fragment} from 'react';
-import RecentPostsList from "../components/RecentPostsList/RecentPostsList";
+import React, {Component} from 'react';
+import { Container, Row, Col } from 'reactstrap';
+import RecentPosts from '../components/PostsList/RecentPosts/RecentPosts';
+import FeaturedPosts from '../components/PostsList/FeaturedPosts/FeaturedPosts';
 
 class HomeContainer extends Component {
   state = {
@@ -15,9 +17,21 @@ class HomeContainer extends Component {
 
   render() {
     return (
-      <Fragment>
-        <RecentPostsList posts={this.state.posts}/>
-      </Fragment>
+      <Container>
+        <Row>
+          <Col>
+            <RecentPosts posts={this.state.posts}/>
+          </Col>
+        </Row>
+        <Row>
+          <Col md='8'>
+            <FeaturedPosts posts={this.state.posts}/>
+          </Col>
+          <Col md='4'>
+            Test
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

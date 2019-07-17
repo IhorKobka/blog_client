@@ -1,0 +1,16 @@
+.BigPost {
+    position: relative;
+    margin-bottom: 40px;
+
+    .body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-top: 15px;
+        padding: 20px 15px;
+
+        .title a {
+            color: #fff;
+        }
+    }
+}

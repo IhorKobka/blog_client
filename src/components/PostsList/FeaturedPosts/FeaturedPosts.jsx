@@ -1,16 +1,22 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { PropTypes } from 'prop-types';
-import Post from "../Post/Post";
+import BigPost from "../../Posts/BigPost/BigPost";
+import MediumPost from "../../Posts/MediumPost/MediumPost";
 
-function RecentPostsList(props) {
-  return(
+function FeaturedPosts(props) {
+  return (
     <Container>
-      <h2>Recent Posts</h2>
+      <h2>Featured Posts</h2>
+      <Row>
+        <Col md='12'>
+          <BigPost post={props.posts.shift()}/>
+        </Col>
+      </Row>
       <Row>
         {props.posts.map((post, index) => (
-          <Col key={index} xs='4'>
-            <Post post={post} />
+          <Col key={index} md='6'>
+            <MediumPost post={post} />
           </Col>
         ))}
       </Row>
@@ -18,7 +24,7 @@ function RecentPostsList(props) {
   )
 }
 
-RecentPostsList.propTypes = {
+FeaturedPosts.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     created_at: PropTypes.string,
@@ -29,4 +35,4 @@ RecentPostsList.propTypes = {
   }))
 };
 
-export default RecentPostsList;
+export default FeaturedPosts;
