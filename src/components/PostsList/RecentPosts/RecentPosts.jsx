@@ -19,14 +19,7 @@ function RecentPosts(props) {
 }
 
 RecentPosts.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    created_at: PropTypes.string,
-    category: {
-      id: PropTypes.number,
-      name: PropTypes.string
-    }
-  }))
+  posts: PropTypes.array
 };
 
 export default RecentPosts;

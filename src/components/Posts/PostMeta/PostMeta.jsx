@@ -19,10 +19,10 @@ function PostMeta(props) {
 PostMeta.propTypes = {
   title: PropTypes.string,
   created_at: PropTypes.string,
-  category: {
+  category: PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string
-  }
+  })
 };
 
 export default PostMeta;

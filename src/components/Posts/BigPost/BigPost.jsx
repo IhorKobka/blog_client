@@ -8,7 +8,7 @@ import './BigPost.css';
 function BigPost(props) {
   return (
     <div className='BigPost'>
-      <PostImage/>
+      <PostImage width={750} height={450}/>
       <div className="body">
         <PostMeta title={props.post.title}
                   created_at={props.post.created_at}
@@ -20,14 +20,7 @@ function BigPost(props) {
 }
 
 BigPost.propTypes = {
-  post: PropTypes.shape({
-    title: PropTypes.string,
-    created_at: PropTypes.string,
-    category: {
-      id: PropTypes.number,
-      name: PropTypes.string
-    }
-  })
+  post: PropTypes.object
 };
 
 export default BigPost;

@@ -8,7 +8,7 @@ import './MediumPost.css';
 function MediumPost(props) {
   return (
     <div className='MediumPost'>
-      <PostImage/>
+      <PostImage width={360} height={215}/>
       <div className="body">
         <PostMeta title={props.post.title}
                   created_at={props.post.created_at}
