@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import RecentPosts from '../components/PostsList/RecentPosts/RecentPosts';
 import FeaturedPosts from '../components/PostsList/FeaturedPosts/FeaturedPosts';
 import MostReadPosts from "../components/PostsList/MostReadPosts/MostReadPosts";
+import Advertise from "../components/Advertise/Advertise";
 
 class HomeContainer extends Component {
   state = {
@@ -29,7 +30,12 @@ class HomeContainer extends Component {
             <FeaturedPosts posts={this.state.posts}/>
           </Col>
           <Col md='4'>
-            <MostReadPosts posts={this.state.posts} shortList={true}/>
+            <Row>
+              <MostReadPosts posts={this.state.posts} shortList={true}/>
+            </Row>
+            <Row>
+              <Advertise width={300} height={250}/>
+            </Row>
           </Col>
         </Row>
         <Row>
@@ -37,6 +43,15 @@ class HomeContainer extends Component {
             <MostReadPosts posts={this.state.posts} shortList={false}/>
           </Col>
           <Col md='4'>
+            <Row>
+              <Advertise width={300} height={250}/>
+            </Row>
+            <Row>
+
+            </Row>
+            <Row>
+
+            </Row>
           </Col>
         </Row>
       </Container>
