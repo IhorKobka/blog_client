@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import RecentPosts from '../components/PostsList/RecentPosts/RecentPosts';
 import FeaturedPosts from '../components/PostsList/FeaturedPosts/FeaturedPosts';
+import MostReadPosts from "../components/PostsList/MostReadPosts/MostReadPosts";
 
 class HomeContainer extends Component {
   state = {
@@ -28,7 +29,14 @@ class HomeContainer extends Component {
             <FeaturedPosts posts={this.state.posts}/>
           </Col>
           <Col md='4'>
-            Test
+            <MostReadPosts posts={this.state.posts} shortList={true}/>
+          </Col>
+        </Row>
+        <Row>
+          <Col md='8'>
+            <MostReadPosts posts={this.state.posts} shortList={false}/>
+          </Col>
+          <Col md='4'>
           </Col>
         </Row>
       </Container>

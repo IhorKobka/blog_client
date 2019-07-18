@@ -6,7 +6,7 @@ import './PostImage.css';
 function PostImage(props) {
   return(
     <a href="" className="image">
-      <img src="https://via.placeholder.com/750x450"
+      <img src={`https://via.placeholder.com/${props.width}x${props.height}`}
            alt=""
            className='img-fluid'
            width={props.width}

@@ -1,0 +1,9 @@
+.SmallPost {
+    margin-bottom: 40px;
+    overflow: hidden;
+
+    .image {
+        float: left;
+        margin-right: 15px;
+    }
+}
