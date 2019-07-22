@@ -5,6 +5,7 @@ import FeaturedPosts from '../components/PostsList/FeaturedPosts/FeaturedPosts';
 import MostReadPosts from "../components/PostsList/MostReadPosts/MostReadPosts";
 import Advertise from "../components/Advertise/Advertise";
 import CategoriesList from "../components/CategoriesList/CategoriesList";
+import TagsList from "../components/TagsList/TagsList";
 
 class HomeContainer extends Component {
   state = {
@@ -21,6 +22,17 @@ class HomeContainer extends Component {
       { id: 2, name: 'category', posts_count: 10 },
       { id: 3, name: 'category', posts_count: 100 },
       { id: 4, name: 'category', posts_count: 5 },
+    ],
+    tags: [
+      { id: 1, name: 'Chrome' },
+      { id: 1, name: 'CSS' },
+      { id: 1, name: 'Tutorial' },
+      { id: 1, name: 'Backend' },
+      { id: 1, name: 'JQuery' },
+      { id: 1, name: 'Design' },
+      { id: 1, name: 'Development' },
+      { id: 1, name: 'JavaScript' },
+      { id: 1, name: 'Website' },
     ]
   };
 
@@ -57,7 +69,7 @@ class HomeContainer extends Component {
               <CategoriesList categories={this.state.categories}/>
             </Row>
             <Row>
-
+              <TagsList tags={this.state.tags} />
             </Row>
           </Col>
         </Row>
