@@ -28,7 +28,7 @@
         }
 
         &.violet {
-            color: var(--blog-violet);
+            background-color: var(--blog-violet);
         }
     }
 

@@ -4,16 +4,23 @@ import RecentPosts from '../components/PostsList/RecentPosts/RecentPosts';
 import FeaturedPosts from '../components/PostsList/FeaturedPosts/FeaturedPosts';
 import MostReadPosts from "../components/PostsList/MostReadPosts/MostReadPosts";
 import Advertise from "../components/Advertise/Advertise";
+import CategoriesList from "../components/CategoriesList/CategoriesList";
 
 class HomeContainer extends Component {
   state = {
     posts: [
       { title: 'Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically', created_at: 'March 27, 2018', category: { id: 1, name: 'category' } },
       { title: 'Post', created_at: 'March 27, 2018', category: { id: 1, name: 'category' } },
+      { title: 'Post', created_at: 'March 27, 2018', category: { id: 2, name: 'category' } },
+      { title: 'Post', created_at: 'March 27, 2018', category: { id: 3, name: 'category' } },
+      { title: 'Post', created_at: 'March 27, 2018', category: { id: 4, name: 'category' } },
       { title: 'Post', created_at: 'March 27, 2018', category: { id: 1, name: 'category' } },
-      { title: 'Post', created_at: 'March 27, 2018', category: { id: 1, name: 'category' } },
-      { title: 'Post', created_at: 'March 27, 2018', category: { id: 1, name: 'category' } },
-      { title: 'Post', created_at: 'March 27, 2018', category: { id: 1, name: 'category' } },
+    ],
+    categories: [
+      { id: 1, name: 'category', posts_count: 100 },
+      { id: 2, name: 'category', posts_count: 10 },
+      { id: 3, name: 'category', posts_count: 100 },
+      { id: 4, name: 'category', posts_count: 5 },
     ]
   };
 
@@ -47,7 +54,7 @@ class HomeContainer extends Component {
               <Advertise width={300} height={250}/>
             </Row>
             <Row>
-
+              <CategoriesList categories={this.state.categories}/>
             </Row>
             <Row>
 

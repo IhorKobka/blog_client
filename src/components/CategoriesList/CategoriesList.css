@@ -1,0 +1,59 @@
+.CategoriesList {
+    width: 360px;
+    margin-top: 40px;
+
+    .category {
+        border-bottom: 1px solid #eceef2;
+
+        a {
+            display: flex;
+            justify-content: space-between;
+            text-decoration: none;
+            padding: 10px 0;
+
+            .name {
+                transition: 0.2s color;
+            }
+
+            &:hover {
+                .name.green {
+                    color: var(--blog-green);
+                }
+
+                .name.orange {
+                    color: var(--blog-orange);
+                }
+
+                .name.blue {
+                    color: var(--blog-blue);
+                }
+
+                .name.violet {
+                    color: var(--blog-violet);
+                }
+            }
+
+            .posts-count {
+                padding: 0 5px;
+                border-radius: 2px;
+                color: #fff;
+
+                &.green {
+                    background-color: var(--blog-green);
+                }
+
+                &.orange {
+                    background-color: var(--blog-orange);
+                }
+
+                &.blue {
+                    background-color: var(--blog-blue);
+                }
+
+                &.violet {
+                    background-color: var(--blog-violet);
+                }
+            }
+        }
+    }
+}
