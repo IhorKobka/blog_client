@@ -7,6 +7,8 @@ class HomePageStore {
   featuredPosts = [];
   mostReadPosts = [];
   mostReadPostsMeta = {};
+  categories = [];
+  tags = [];
   isLoadingRecentPosts = false;
 
   fetchRecentPosts() {
@@ -28,19 +30,44 @@ class HomePageStore {
       })
   }
 
-  fetchMostReadPosts() {
-    apiUtil.postsList('most_read', null, null, null, 4)
+  fetchMostReadPosts(page = null) {
+    apiUtil.postsList('most_read', null, null, page, 4)
       .then(response => {
         runInAction(() => {
           this.mostReadPosts = this.mostReadPosts.concat(response.collection);
           this.mostReadPostsMeta = response.meta;
-          console.log(this.mostReadPosts);
+          console.log(this.mostReadPostsMeta);
         });
       })
   }
 
   get mostReadPostsShort() {
     return this.mostReadPosts.slice(0,4)
+  }
+
+  fetchCategories() {
+    apiUtil.categoriesList()
+      .then(response => {
+        runInAction(() => {
+          this.categories = response.collection;
+        })
+      })
+  }
+
+  fetchTags() {
+    apiUtil.tagsList()
+      .then(response => {
+        runInAction(() => {
+          this.tags = response.collection;
+        })
+      })
+  }
+
+  loadMoreMostReadPosts(currentPage, totalPages) {
+    const nextPage = currentPage + 1;
+    if (nextPage <= totalPages) {
+      this.fetchMostReadPosts(nextPage);
+    }
   }
 }
 
@@ -49,9 +76,13 @@ decorate(HomePageStore, {
   featuredPosts: observable,
   mostReadPosts: observable,
   mostReadPostsMeta: observable,
+  categories: observable,
+  tags: observable,
   fetchRecentPosts: action,
   fetchFeaturedPosts: action,
   fetchMostReadPosts: action,
+  fetchCategories: action,
+  fetchTags: action,
   mostReadPostsShort: computed,
 });
 

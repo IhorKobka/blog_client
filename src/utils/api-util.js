@@ -22,3 +22,20 @@ export const postsList = (type, q, category_id, page, per_page) => {
   })
 };
 
+export const categoriesList = () => {
+  return api({
+    method: 'GET',
+    url: 'categories',
+  }).then(function (response) {
+    return response.data;
+  })
+};
+
+export const tagsList = () => {
+  return api({
+    method: 'GET',
+    url: 'tags',
+  }).then(function (response) {
+    return response.data;
+  })
+};
