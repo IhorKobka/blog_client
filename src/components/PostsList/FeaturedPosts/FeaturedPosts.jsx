@@ -9,15 +9,15 @@ function FeaturedPosts(props) {
     <Container>
       <h2>Featured Posts</h2>
       <Row>
-        <Col md='12'>
-          <BigPost post={props.posts.shift()}/>
-        </Col>
-      </Row>
-      <Row>
         {props.posts.map((post, index) => (
-          <Col key={index} md='6'>
-            <MediumPost post={post} />
-          </Col>
+          index === 0 ?
+            <Col key={index} md='12'>
+              <BigPost post={post}/>
+            </Col>
+            :
+            <Col key={index} md='6'>
+              <MediumPost post={post} />
+            </Col>
         ))}
       </Row>
     </Container>
