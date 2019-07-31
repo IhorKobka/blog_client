@@ -7,8 +7,6 @@ class HomePageStore {
   featuredPosts = [];
   mostReadPosts = [];
   mostReadPostsMeta = {};
-  categories = [];
-  tags = [];
   isLoadingRecentPosts = false;
 
   fetchRecentPosts() {
@@ -45,24 +43,6 @@ class HomePageStore {
     return this.mostReadPosts.slice(0,4)
   }
 
-  fetchCategories() {
-    apiUtil.categoriesList()
-      .then(response => {
-        runInAction(() => {
-          this.categories = response.collection;
-        })
-      })
-  }
-
-  fetchTags() {
-    apiUtil.tagsList()
-      .then(response => {
-        runInAction(() => {
-          this.tags = response.collection;
-        })
-      })
-  }
-
   loadMoreMostReadPosts(currentPage, totalPages) {
     const nextPage = currentPage + 1;
     if (nextPage <= totalPages) {
@@ -76,13 +56,9 @@ decorate(HomePageStore, {
   featuredPosts: observable,
   mostReadPosts: observable,
   mostReadPostsMeta: observable,
-  categories: observable,
-  tags: observable,
   fetchRecentPosts: action,
   fetchFeaturedPosts: action,
   fetchMostReadPosts: action,
-  fetchCategories: action,
-  fetchTags: action,
   mostReadPostsShort: computed,
 });
 

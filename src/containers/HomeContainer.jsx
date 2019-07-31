@@ -16,8 +16,6 @@ function HomeContainer(props) {
       props.store.fetchRecentPosts();
       props.store.fetchFeaturedPosts();
       props.store.fetchMostReadPosts();
-      props.store.fetchCategories();
-      props.store.fetchTags();
     },
     []
   );
@@ -56,10 +54,10 @@ function HomeContainer(props) {
             <Advertise width={300} height={250}/>
           </Row>
           <Row>
-            <CategoriesList categories={props.store.categories}/>
+            <CategoriesList categories={props.categories}/>
           </Row>
           <Row>
-            <TagsList tags={props.store.tags} />
+            <TagsList tags={props.tags} />
           </Row>
         </Col>
       </Row>
@@ -68,7 +66,9 @@ function HomeContainer(props) {
 }
 
 HomeContainer.propTypes = {
-  store: PropTypes.object
+  store: PropTypes.object,
+  categories: PropTypes.array,
+  tags: PropTypes.array
 };
 
 export default HomeContainer;
