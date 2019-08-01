@@ -15,7 +15,6 @@ function HomeContainer(props) {
     () => {
       props.store.fetchRecentPosts();
       props.store.fetchFeaturedPosts();
-      props.store.fetchMostReadPosts();
     },
     []
   );
@@ -32,7 +31,7 @@ function HomeContainer(props) {
         </Col>
         <Col md='4'>
           <Row>
-            <MostReadPosts posts={props.store.mostReadPostsShort} shortList={true}/>
+            <MostReadPosts posts={props.appStore.mostReadPostsShort} shortList={true}/>
           </Row>
           <Row>
             <Advertise width={300} height={250}/>
@@ -41,11 +40,11 @@ function HomeContainer(props) {
       </Row>
       <Row>
         <Col md='8'>
-          <MostReadPosts posts={props.store.mostReadPosts} shortList={false}/>
+          <MostReadPosts posts={props.appStore.mostReadPosts} shortList={false}/>
           <LoadMoreBtn
-            loadPosts={() => props.store.loadMoreMostReadPosts(
-              props.store.mostReadPostsMeta.current_page,
-              props.store.mostReadPostsMeta.total_pages,
+            loadPosts={() => props.appStore.loadMoreMostReadPosts(
+              props.appStore.mostReadPostsMeta.current_page,
+              props.appStore.mostReadPostsMeta.total_pages,
             )}
           />
         </Col>
@@ -54,10 +53,10 @@ function HomeContainer(props) {
             <Advertise width={300} height={250}/>
           </Row>
           <Row>
-            <CategoriesList categories={props.categories}/>
+            <CategoriesList categories={props.appStore.categories}/>
           </Row>
           <Row>
-            <TagsList tags={props.tags} />
+            <TagsList tags={props.appStore.tags} />
           </Row>
         </Col>
       </Row>
@@ -67,8 +66,7 @@ function HomeContainer(props) {
 
 HomeContainer.propTypes = {
   store: PropTypes.object,
-  categories: PropTypes.array,
-  tags: PropTypes.array
+  appStore: PropTypes.object
 };
 
 export default HomeContainer;

@@ -1,12 +1,10 @@
 import * as apiUtil from '../utils/api-util';
-import { decorate, observable, action, computed, configure, runInAction } from 'mobx';
+import { decorate, observable, action, configure, runInAction } from 'mobx';
 configure({ enforceActions: 'observed' });
 
 class HomePageStore {
   recentPosts = [];
   featuredPosts = [];
-  mostReadPosts = [];
-  mostReadPostsMeta = {};
   isLoadingRecentPosts = false;
 
   fetchRecentPosts() {
@@ -27,28 +25,6 @@ class HomePageStore {
         });
       })
   }
-
-  fetchMostReadPosts(page = null) {
-    apiUtil.postsList('most_read', null, null, page, 4)
-      .then(response => {
-        runInAction(() => {
-          this.mostReadPosts = this.mostReadPosts.concat(response.collection);
-          this.mostReadPostsMeta = response.meta;
-          console.log(this.mostReadPostsMeta);
-        });
-      })
-  }
-
-  get mostReadPostsShort() {
-    return this.mostReadPosts.slice(0,4)
-  }
-
-  loadMoreMostReadPosts(currentPage, totalPages) {
-    const nextPage = currentPage + 1;
-    if (nextPage <= totalPages) {
-      this.fetchMostReadPosts(nextPage);
-    }
-  }
 }
 
 decorate(HomePageStore, {
@@ -58,8 +34,6 @@ decorate(HomePageStore, {
   mostReadPostsMeta: observable,
   fetchRecentPosts: action,
   fetchFeaturedPosts: action,
-  fetchMostReadPosts: action,
-  mostReadPostsShort: computed,
 });
 
 export default HomePageStore;
