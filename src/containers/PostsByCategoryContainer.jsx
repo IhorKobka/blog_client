@@ -7,14 +7,21 @@ import MostReadPosts from "../components/PostsList/MostReadPosts/MostReadPosts";
 import CategoriesList from "../components/CategoriesList/CategoriesList";
 import TagsList from "../components/TagsList/TagsList";
 import PostsList from "../components/PostsList/PostsList";
+import LoadMoreBtn from "../components/LoadMoreBtn/LoadMoreBtn";
+import {nextPage} from "../utils/pagination";
 
 function PostsByCategoryContainer(props) {
   const category = findCategory(props.appStore.categories, props.match.params.id);
+  const page = nextPage(props.store.meta);
+
   useEffect(
     () => {
-      props.store.fetchPosts(category.id)
+      if (category.id) {
+        props.store.clearPosts();
+        props.store.fetchPosts(category.id)
+      }
     },
-    []
+    [category]
   );
 
   return useObserver(() =>
@@ -30,6 +37,9 @@ function PostsByCategoryContainer(props) {
             </Row>
             <Row>
               <PostsList posts={props.store.posts}/>
+              {
+                page ? <LoadMoreBtn loadPosts={() => props.store.fetchPosts(category.id, page)}/> : null
+              }
             </Row>
           </Col>
           <Col md='4'>

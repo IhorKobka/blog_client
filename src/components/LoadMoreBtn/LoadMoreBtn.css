@@ -1,5 +1,7 @@
 .LoadMoreBtn {
+    width: 100%;
     text-align: center;
+
     button {
         padding: 9px 45px;
         border: none;

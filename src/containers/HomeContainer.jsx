@@ -9,8 +9,11 @@ import TagsList from "../components/TagsList/TagsList";
 import { PropTypes } from 'prop-types';
 import { useObserver } from 'mobx-react-lite';
 import LoadMoreBtn from "../components/LoadMoreBtn/LoadMoreBtn";
+import {nextPage} from "../utils/pagination";
 
 function HomeContainer(props) {
+  const page = nextPage(props.appStore.mostReadPostsMeta);
+
   useEffect(
     () => {
       props.store.fetchRecentPosts();
@@ -41,12 +44,9 @@ function HomeContainer(props) {
       <Row>
         <Col md='8'>
           <MostReadPosts posts={props.appStore.mostReadPosts} shortList={false}/>
-          <LoadMoreBtn
-            loadPosts={() => props.appStore.loadMoreMostReadPosts(
-              props.appStore.mostReadPostsMeta.current_page,
-              props.appStore.mostReadPostsMeta.total_pages,
-            )}
-          />
+          {
+            page ? <LoadMoreBtn loadPosts={() => props.appStore.fetchMostReadPosts(page)}/> : null
+          }
         </Col>
         <Col md='4'>
           <Row>

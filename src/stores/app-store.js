@@ -39,13 +39,6 @@ class AppStore {
   get mostReadPostsShort() {
     return this.mostReadPosts.slice(0,4)
   }
-
-  loadMoreMostReadPosts(currentPage, totalPages) {
-    const nextPage = currentPage + 1;
-    if (nextPage <= totalPages) {
-      this.fetchMostReadPosts(nextPage);
-    }
-  }
 }
 
 decorate(AppStore, {

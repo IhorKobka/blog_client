@@ -15,11 +15,19 @@ class CategoryPostsStore {
         })
       })
   }
+
+  clearPosts() {
+    runInAction(() => {
+      this.posts = [];
+      this.meta = {};
+    })
+  }
 }
 
 decorate(CategoryPostsStore, {
   posts: observable,
-  fetchPosts: action
+  fetchPosts: action,
+  clearPosts: action
 });
 
 export default CategoryPostsStore;
