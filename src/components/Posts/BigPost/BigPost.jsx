@@ -8,9 +8,10 @@ import './BigPost.css';
 function BigPost(props) {
   return (
     <div className='BigPost'>
-      <PostImage width={750} height={450}/>
+      <PostImage width={750} height={450} id={props.post.id}/>
       <div className="body">
-        <PostMeta title={props.post.title}
+        <PostMeta id={props.post.id}
+                  title={props.post.title}
                   created_at={props.post.created_at}
                   category={props.post.category}
         />

@@ -8,9 +8,10 @@ import './DetailedPost.css';
 function DetailedPost(props) {
   return (
     <div className='DetailedPost'>
-      <PostImage width={300} height={180}/>
+      <PostImage width={300} height={180} id={props.post.id}/>
       <div className="body">
-        <PostMeta title={props.post.title}
+        <PostMeta id={props.post.id}
+                  title={props.post.title}
                   created_at={props.post.created_at}
                   category={props.post.category}
         />
