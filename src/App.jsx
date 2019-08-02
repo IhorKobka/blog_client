@@ -6,15 +6,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HeaderContainer from "./containers/HeaderContainer";
 import HomeContainer from "./containers/HomeContainer";
 import PostsByCategoryContainer from "./containers/PostsByCategoryContainer";
-import PostDetails from "./components/PostDetails/PostDetails";
+import PostDetailsContainer from "./containers/PostDetailsContainer";
 
 import AppStore from './stores/app-store';
-import HomePageStore from './stores/home-page-store';
-import CategoryPostsStore from "./stores/category-posts-store";
 
 const appStore = new AppStore();
-const homePageStore = new HomePageStore();
-const categoryPostsStore = new CategoryPostsStore();
 
 function App() {
   useEffect(
@@ -31,13 +27,13 @@ function App() {
       <HeaderContainer categories={appStore.categories} />
       <Switch>
         <Route exact path="/" render={(props) =>
-          <HomeContainer {...props} appStore={appStore} store={homePageStore}/>
+          <HomeContainer {...props} appStore={appStore}/>
         }/>
         <Route path='/posts_by_category/:id' render={(props) =>
-          <PostsByCategoryContainer {...props} appStore={appStore} store={categoryPostsStore}/>
+          <PostsByCategoryContainer {...props} appStore={appStore}/>
         }/>
         <Route path='/posts/:id' render={(props) =>
-          <PostDetails {...props} />
+          <PostDetailsContainer {...props} appStore={appStore}/>
         }/>
       </Switch>
     </Router>

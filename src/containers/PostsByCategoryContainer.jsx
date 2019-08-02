@@ -9,16 +9,19 @@ import TagsList from "../components/TagsList/TagsList";
 import PostsList from "../components/PostsList/PostsList";
 import LoadMoreBtn from "../components/LoadMoreBtn/LoadMoreBtn";
 import {nextPage} from "../utils/pagination";
+import CategoryPostsStore from "../stores/category-posts-store";
+
+const store = new CategoryPostsStore();
 
 function PostsByCategoryContainer(props) {
   const category = findCategory(props.appStore.categories, props.match.params.id);
-  const page = nextPage(props.store.meta);
+  const page = nextPage(store.meta);
 
   useEffect(
     () => {
       if (category.id) {
-        props.store.clearPosts();
-        props.store.fetchPosts(category.id)
+        store.clearPosts();
+        store.fetchPosts(category.id)
       }
     },
     [category]
@@ -36,9 +39,9 @@ function PostsByCategoryContainer(props) {
               </Col>
             </Row>
             <Row>
-              <PostsList posts={props.store.posts}/>
+              <PostsList posts={store.posts}/>
               {
-                page ? <LoadMoreBtn loadPosts={() => props.store.fetchPosts(category.id, page)}/> : null
+                page ? <LoadMoreBtn loadPosts={() => store.fetchPosts(category.id, page)}/> : null
               }
             </Row>
           </Col>

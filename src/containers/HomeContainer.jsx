@@ -10,14 +10,17 @@ import { PropTypes } from 'prop-types';
 import { useObserver } from 'mobx-react-lite';
 import LoadMoreBtn from "../components/LoadMoreBtn/LoadMoreBtn";
 import {nextPage} from "../utils/pagination";
+import HomePageStore from "../stores/home-page-store";
+
+const store = new HomePageStore();
 
 function HomeContainer(props) {
   const page = nextPage(props.appStore.mostReadPostsMeta);
 
   useEffect(
     () => {
-      props.store.fetchRecentPosts();
-      props.store.fetchFeaturedPosts();
+      store.fetchRecentPosts();
+      store.fetchFeaturedPosts();
     },
     []
   );
@@ -25,12 +28,12 @@ function HomeContainer(props) {
     <Container>
       <Row>
         <Col>
-          <RecentPosts posts={props.store.recentPosts}/>
+          <RecentPosts posts={store.recentPosts}/>
         </Col>
       </Row>
       <Row>
         <Col md='8'>
-          <FeaturedPosts posts={props.store.featuredPosts}/>
+          <FeaturedPosts posts={store.featuredPosts}/>
         </Col>
         <Col md='4'>
           <Row>
@@ -65,7 +68,6 @@ function HomeContainer(props) {
 }
 
 HomeContainer.propTypes = {
-  store: PropTypes.object,
   appStore: PropTypes.object
 };
 

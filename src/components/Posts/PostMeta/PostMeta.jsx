@@ -1,17 +1,14 @@
 import React, {Fragment} from "react";
 import {PropTypes} from "prop-types";
-import { categoryColor } from "../../../utils/category-color";
 import {NavLink} from "react-router-dom";
 import './PostMeta.css';
+import PostCategory from "../PostCategory/PostCategory";
 
 function PostMeta(props) {
   return(
     <Fragment>
       <div className="meta">
-        <NavLink to={`/posts_by_category/${props.category.id}`}
-                 className={`category ${categoryColor(props.category.id)}`}>
-          {props.category.name}
-        </NavLink>
+        <PostCategory category={props.category}/>
         <span className='date'>{props.created_at}</span>
       </div>
       <h5 className="title">
@@ -27,10 +24,7 @@ PostMeta.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
   created_at: PropTypes.string,
-  category: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string
-  })
+  category: PropTypes.object
 };
 
 export default PostMeta;

@@ -1,16 +1,12 @@
 import React from 'react';
+// import {PropTypes} from "prop-types";
+// import {Container, Row, Col} from 'reactstrap';
 
-function PostDetails(props) {
+import './PostDetails.css';
+
+function PostDetails() {
   return (
-    <div className='PostDetails'>
-      <div className="banner">
-        <div className="meta">
-          <span className="category">qwe</span>
-          <span className="date">qwe</span>
-          <h3 className="title">qwe</h3>
-        </div>
-      </div>
-    </div>
+    <div>qweqw</div>
   )
 }
 
